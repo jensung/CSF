@@ -1,0 +1,53 @@
+1. A line of people at an amusement park ride.
+
+The line is composed of members, represented as strings.
+There is a front to the line, as well as a back.
+When someone enters the line, place them at the end.
+People may leave the line whenever they see fit, and those behind them take their place.
+Given the above real-world information, use an array data structure to code the following solution.
+
+a) Use an array input: ["Vivian", "Ava", "Josh", "Patrick", "Mike"]
+var peopleInLine = ["Vivian", "Ava", "Josh", "Patrick", "Mike"]
+
+b) Insert a new person, "Mary" at the end of the line. In other words, you should insert Mary after Mike.
+function addNewPerson(name){
+   return peopleInLine.push(name);
+}
+addNewPerson("Mary");
+
+c) Find a person in line named "Josh." This function should return the position of 2 in the array, (recall that arrays are 0-based).
+function findPerson(name){
+   return peopleInLine.indexOf(name);
+}
+findPerson("Josh");
+
+d) Find a person in line named "Emily." What should your function return if it does not find the item in the array?
+Since Emily is not in the line, the function will return undefined. But with a different function, we can write that they are not in the line. 
+function findPerson(name) {
+   var personPlace = peopleInLine.indexOf(name)
+   if (personPlace < 0 ) {
+      return 'Not in line.'
+   }
+   else return personPlace;
+};
+findPerson("Emily");
+
+e) What if Ava wants to allow a friend, "Melissa", to cut in line in front of her? How would you code this so Melissa appears before Ava?
+function cutsInFront(friendInLine, cutter) {
+   var linePlace = peopleInLine.indexOf(friendInLine)
+   peopleInLine.splice(linePlace, 0, cutter)
+};
+cutsInFront("Ava", "Melissa");
+
+f) If Patrick wants to leave the line, how would you delete him from the array?
+function leaveLine(name){
+   var lostPlace = peopleInLine.indexOf(name)
+   peopleInLine.splice(lostPlace, 1)
+};
+leaveLine("Patrick");
+
+2. Provide another real-world example that you can model using a data structure.
+Maybe for inventory in a store or creating a list of people in a sports league.
+
+3. How would your data structure allow developers to access and manipulate the data?
+Developers would be able to call data points based on the criteria that they are looking for and order the data in the way they see fit.
