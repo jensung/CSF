@@ -1,0 +1,110 @@
+Assignment
+Exercises
+
+1. What is the main difference between a stack and a queue?
+A stack operates as LIFO (last in first out) and queue uses FIFO (first in first out)
+
+2. What are the similarities between stacks and queues?
+They both are arranged data structures that can call and store data in certain ways depending on the type. 
+
+3. Imagine you are an engineer tasked with implementing the UNDO and REDO options in a word processor such as Microsoft Word. Which data structure would you use for each option and why?
+LIFO would be the best operation for the UNDO REDO actions so a stack data structure would be best. The last thing you deleted would be the first thing that you would want called back. 
+
+Programming Questions
+
+1. Given a string, reverse it using a stack. For example, the string "Bloc!" should be converted to "!colB".
+FUNCTION REVERSE(string)
+  INIT a new stack
+  FOR each character in string
+    CALL stack.push WITH character
+  END FOR
+  INIT reversed to empty array
+  FOR each character in string
+    CALL stack.pop to append to reverse
+  END FOR
+  INIT reversedString to equal reversed.join
+  RETURN reversedString
+END FUNCTION
+
+function reverse(string) {
+var stack = [];
+    for (let i = 0; i<string.length; i++) {
+      stack.push(string[i]);
+    }
+
+  var reversed = [""] ;
+  for (let i=0; i<string.length; i++){
+    reversed.push(stack.pop());
+  }
+  let reversedString = reversed.join('');
+  return reversedString;
+}
+
+2. Implement the pop method of a stack using one queue. Make a FIFO data structure mirror the functionality of a LIFO data structure. Since the internal list is not the same as defined in the checkpoint, it may help to rewrite the pseudocode first.
+
+CREATE FUNCTION with queue as argument
+  FOR each element in queue
+    IF element is last one
+      Remove element
+    ELSE
+      Remove the first element from queue and append to queue
+    END
+  END FOR
+  RETURN queue
+END
+
+function pop(queue) {
+  let loops = queue.length;
+  for (let i = 0; i < loops; i++) {
+    if (i == (loops - 1)) {
+      return queue.shift();
+    } else {
+      queue.push(queue[0]);
+      queue.shift();
+    }
+  }
+}
+
+1. Implement the enqueue and dequeue methods defined in the checkpoint inside your own Queue class.
+
+PSEUDOCODE:
+
+INITIATE CLASS Queue
+  DEFINE queue
+  FUNCTION enqueue(element)
+    APPEND element to end of queue
+  END function
+  FUNCTION dequeue
+    RETURN the first element from queue
+  END function
+  FUNCTION pop
+    FOR each item in queue
+      SET temp to first item in queue
+      APPEND first item in queue to end of queue
+      RETURN first item in queue
+    END LOOP
+  END FUNCTION
+
+  JAVASCRIPT:
+
+  class Queue {
+  constructor() {
+    this.queue = [1,2,3];
+  }
+
+  enqueue(element) {
+    this.queue.push(element)
+  }
+
+  dequeue() {
+    return this.queue.shift();
+  }
+
+  pop() {
+    for (let i=0; i<this.queue.length-1; i++){
+      var temp = this.dequeue();
+      this.enqueue(temp);
+      return this.dequeue();
+    }
+  }
+}
