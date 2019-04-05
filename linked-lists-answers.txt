@@ -77,19 +77,28 @@ WHILE the temp is not null
 End function
 
 
-removeDuplicates() {
-  var temp = this.headNode;
-  while (temp !== null) {
-    var nextNode = temp.next;
-    while (nextNode !== null) {
-      if (temp.element === nextNode.element) {
-        temp.next = nextNode.next;
-        delete this.nextNode;
-      }
-      nextNode = nextNode.next;
-    }
-    temp = temp.next;
+LinkedList.prototype.duplicate = function(){
+ if (!this.head || !this.head.next) {
+      console.log("no duplicates");
+      return;
   }
+
+    var thisNode = this.head;
+    while (thisNode != null) {
+      var previousNode = thisNode;
+      var nextNode = thisNode.next;
+      while (nextNode != null) {
+        if (thisNode.value == nextNode.value) {
+          previousNode.next = nextNode.next;
+          this.length --;
+        } else {
+          previousNode = nextNode;
+        }
+        nextNode = nextNode.next;
+      }
+      thisNode = thisNode.next;
+    }
+    return this;
 }
 
 3. Given an unsorted singly linked list, reverse it.
@@ -110,16 +119,17 @@ end While
   set headNode to previous
 End Function
 
-reverse() {
-var current = this.headNode;
-var next = null;
-var previous = null;
+LinkedList.prototype.reverse= function() {
+    var previousNode = null;
+    var thisNode = this.head;
+    var nextNode;
 
-  while (current !== null) {
-   next = current.next;
-   current.next = previous;
-   previous = current;
-   current = next;
+    while (thisNode) {
+      nextNode = thisNode.next;
+      thisNode.next = previousNode;
+      previousNode = thisNode;
+      thisNode = nextNode;
+    }
+
+    this.head = previousNode;
   }
-  this.headNode = previous;
-}
