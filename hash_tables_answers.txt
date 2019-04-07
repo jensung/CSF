@@ -1,0 +1,201 @@
+Exercises
+
+1. What is a hash table?
+  It's a type of data structure that stores values by linking them to unique keys.
+
+2. What is hashing?
+  It's the process of converting a string(key) into a numerical index/value(hash code).
+
+3. How does a hash table store data?
+  It takes the unique keys/hash codes and figures out where to place them into an array index.
+
+4. How are hash tables and objects different?
+   Hash tables can handle more larger similar data sets and have some sort of identifier to store them. Hash tables are best used when the data has a variable number of consistently formatted values.
+   Objects hold potentially different types of data and are best used with a static number of values.
+5. Determine whether you would use a hash table or an object to store each of the following pieces of data:
+  a. A list of pets and their unique names.
+    Hash Table
+  b. The name, age, and the birthday of your best friend.
+    Object
+  c. The name and location of every company in a given city.
+    Hash Table
+  d. All of the books checked out from a library by a particular individual.
+    Hash Table
+  e. The primary and secondary phone numbers for a contact.
+    Object
+
+Programming Questions
+1. Create a hash table that allows a sales associate to enter a customer's name, address, and phone number into the system and look up customers using their phone numbers.
+class customerList {
+  constructor() {
+    this.data = [];
+    this.maxSize = 50;
+  }
+
+  hash(string) {
+    let hash = 0;
+    for (let i = 0; i < string.length; i++) {
+      hash += string.charCodeAt(i);
+    }
+    return hash % this.maxSize;
+  }
+
+  find(key) {
+    let index = this.hash(key);
+    if (!this.data[index]) {
+      return "Not a Customer";
+    } else {
+      return this.data[index];
+    }
+  }
+
+  add(value) {
+    var key = value.phone;
+    var index = this.hash(key);
+    var inserted = false;
+
+    if (this.data[index] === undefined) {
+      this.data[index] = value;
+    } else {
+      for (var i = 0; i < data[index].length; i++) {
+        if (data[index][i][0] === key) {
+          data[index][i][1] = value;
+          inserted = true;
+        }
+      }
+      if ((inserted = false)) {
+        data[index].push([value]);
+      }
+    }
+  }
+}
+
+var list = new customerList();
+
+list.add({ phone: "7033958053", name: "Jen", address: "1109 Themis St SE" });
+list.add({ phone: "7032225449", name: "John", address: "5881 Linden Creek Ct" });
+list.add({ phone: "4122685000", name: "Andrew", address: "5000 Forbes Ave" });
+
+list.find("4122685000");
+list.find("1111111111");
+
+2. Create a hash table that allows a store owner to track their store's inventory and quantity.
+class inventoryCatalog {
+  constructor() {
+    this.data = [];
+    this.maxSize = 50;
+  }
+
+  hash(string) {
+    let hash = 0;
+    for (let i = 0; i < string.length; i++) {
+      hash += string.charCodeAt(i);
+    }
+    return hash % this.maxSize;
+  }
+
+  find(key) {
+    let index = this.hash(key);
+    if (!this.data[index]) {
+      return "Not in Inventory";
+    } else {
+      return this.data[index];
+    }
+  }
+
+  add(value) {
+    var key = value.product;
+    var index = this.hash(key);
+    var inserted = false;
+
+    if (this.data[index] === undefined) {
+      this.data[index] = value;
+    } else {
+      for (var i = 0; i < data[index].length; i++) {
+        if (data[index][i][0] === key) {
+          data[index][i][1] = value;
+          inserted = true;
+        }
+      }
+      if ((inserted = false)) {
+        data[index].push([value]);
+      }
+    }
+  }
+
+  update(product, sold, restocked){
+    var key = product;
+    var index = this.hash(key);
+    var net = restocked - sold;
+    if (!this.data[index]){
+     return "Please add product to Inventory"
+    } else {
+      this.data[index].inStock += net;
+    }
+    return this.data[index];
+  }
+}
+
+var list = new inventoryCatalog();
+list.add({ product: "Headphones", inStock: 20});
+list.add({ product: "Speakers", inStock: 15});
+list.add({ product: "Mouse", inStock: 12});
+list.add({ product: "USB", inStock: 17});
+
+list.update("Headphones", 1, 0);
+list.update("USB", 2, 5);
+
+3. Create a hash table that allows digital copies of newspapers to be entered and searched by publisher and publication date.
+class newspaperSearch {
+  constructor() {
+    this.data = [];
+    this.maxSize = 50;
+  }
+
+  hash(string) {
+    let hash = 0;
+    for (let i = 0; i < string.length; i++) {
+      hash += string.charCodeAt(i);
+    }
+    return hash % this.maxSize;
+  }
+
+  find(publisher, date) {
+    var key = publisher + date;
+    let index = this.hash(key);
+    if (!this.data[index]) {
+      return "Could not locate your newspaper";
+    } else {
+      return this.data[index].title;
+    }
+  }
+
+  add(value) {
+    var key = value.publisher + value.date;
+    var index = this.hash(key);
+    var inserted = false;
+
+    if (this.data[index] === undefined) {
+      this.data[index] = value;
+    } else {
+      for (var i = 0; i < data[index].length; i++) {
+        if (data[index][i][0] === key) {
+          data[index][i][1] = value;
+          inserted = true;
+        }
+      }
+      if ((inserted = false)) {
+        data[index].push([value]);
+      }
+    }
+  }
+}
+
+var list = new newspaperSearch();
+
+list.add({ publisher: "The Washington Post", date: 04072019, title: "What is Democracy?" })
+list.add({ publisher: "The New York Times", date: 04052019, title: "This is Peak Potato" })
+list.add({ publisher: "Chicago Tribune", date: 04032019, title: "Bears Q&A" })
+list.add({ publisher: "Los Angeles Times", date: 04012019, title: "A Robot walks into a bar, doesn't get the joke" })
+
+list.find("The New York Times", 04052019)
