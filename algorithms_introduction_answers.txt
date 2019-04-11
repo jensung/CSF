@@ -1,0 +1,54 @@
+Exercises
+
+1. Using proper pseudo-code, describe the following primitive algorithms:
+
+Making coffee;
+  FUNCTION makeCoffee
+    PLACE filter in coffeeMaker
+    ADD ground to filter
+    ADD water to reservoir
+    PLACE pot under the nozzle
+    Press START button on coffee maker
+    AFTER coffeeMaker has finished
+    REMOVE pot and pour coffee into mug
+  END FUNCTION
+
+Washing dishes;
+  FUNCTION washDishes
+    SET dish to number of dishes to wash
+    WHILE dish does not equal zero
+      PICK up the dish
+      CLEAN dish with a soapy sponge
+      RINSE dish with clean water
+      SET dish to dry
+    END WHILE
+  END FUNCTION
+
+A choice of your own.
+  FUNCTION brushTeeth
+    OPEN toothpaste
+    HOLD toothbrush
+    SQUEEZE toothpaste onto toothbrush
+    CLOSE toothpaste
+    PUT toothbrush in mouth
+    WHILE time is less than 2 minutes
+      BRUSH teeth behind and front
+    END WHILE
+    SPIT out toothpaste foam
+    RINSE out mouth and toothbrush
+  END FUNCTION
+
+2. As with the knot algorithm, there may be more than one way to solve the problem.
+It is essential to try to pick the best algorithm for a situation. Name three
+companies who created an algorithm that made them successful, e.g., Google's search
+algorithm. It doesn't need to be a tech example (such as a recipe or manufacturing
+a product). Google's algorithm produces more relevant results than other search
+engines; what about each of your cases make them stand out?
+
+General Motors: when they first introduced mechanical robot arms into the manufacturing process of cars they changed the future of car building and assembly lines.
+Duolingo: This language app has made learning a new language simple and easy by incorporating simple exercise into our daily schedules. Just doing 5 minutes everyday can change the way we remember and learn things.
+Instacart: This grocery delivery service has change the way that we buy food. You can set your deliver times and ensure that you get the products you want and can even set up backups incase they don't have a particular product.
+
+3. Hypothesize about what constitutes an efficient algorithm versus an inefficient algorithm.
+
+An efficient algorithm would be clear and concise. It should have the least amount of steps to achieve the solution as well as taking up less time and resources. An inefficient algorithm would just be the opposite. It would take too much time, have extraneous steps, take up too many resources, and not be clear in code.
