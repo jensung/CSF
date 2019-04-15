@@ -1,0 +1,48 @@
+1. Define and compare recursion and iteration.
+  Recursion is a function that calls itself until a base case is reached.
+  Iteration is a function that has a defined number of loops that executes over and over.
+  Recursive functions run slower and use a lot of resources while iterative functions run faster but are harder to implement
+
+2. Name five algorithms that are commonly implemented by recursion.
+  Factorials, Fibonacci numbers, binary search, quick sort, merge sort
+
+3. When should you use recursion, and when should you avoid recursion? Give examples for each.
+  Recursion should be used when an algorithm can be expressed recursively or the problem needs self reference, like in finding a factorial of a number. You should avoid recursion when passing over a collection of items, like when looking for a maximum in an array.
+
+4. Compare the recursive and iterative solutions to the three algorithms from the checkpoint (factorial, maximum, and fibonacci). What is similar, and what is different?
+  The similarities between the recursive and iterative solutions is that there is a defined base case, however, recursive functions use the base case to stop the loop while iterative functions start at the base case and build up to the solution.
+
+5. Given a multi-dimensional collection (such as an array) where the number of dimensions is unknown, write a recursive algorithm to count the number of items in the entire collection.
+
+function countItems(collection) {
+  if ((typeof collection) != "object") {
+    return 1;
+  } else if (collection.length == 1) {
+    let first = collection[0];
+    return countItems(first);
+  } else {
+    let first = collection.shift();
+    return (countItems(first) + countItems(collection));
+  }
+}
+
+countItems([[1,4,7],2,[3,6],[2,4,6]]);
+countItems([6, [10, 12], 14, 16, 20, 3, 5, 8, 14, 19]);
+
+6. A palindrome is a word or phrase whose spelling is the same either direction (e.g., racecar). Write a recursive algorithm to determine if a given word or phrase is a palindrome.
+
+function isPalindrome(word) {
+    word = word.toLowerCase();
+    let endingIndex = word.length - 1;
+    if (word.length <= 1) return true;
+    if (word[0] === word[endingIndex]) {
+        return isPalindrome(word.slice(1, endingIndex))
+    }
+    return false;
+}
+
+isPalindrome('tacocat');
+isPalindrome('noodle');
+
+7. Google Easter Egg: Google the term "recursion". Google will prompt you with "Did you mean: recursion". Explain why this behavior exhibits properties of recursion.
+  Since recursion is when a function calls upon itself, Google is doing the same by returning the search as an option. When clicking the link, you are returned to the same search option again.  
