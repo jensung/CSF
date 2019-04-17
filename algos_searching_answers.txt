@@ -48,11 +48,15 @@ findWord(dictionary, "Albatross")
 
 2. You work at a pet store, and a child has asked you to net the only white-spotted goldfish from the fish tank. Write a program that will help you net the right fish.
 
+const fishTank = [ { name: "goldfish", hasWhiteSpots: false }, { name: "goldfish", hasWhiteSpots: false } , { name: "goldfish", hasWhiteSpots: false } , { name: "goldfish", hasWhiteSpots: false } , { name: "goldfish", hasWhiteSpots: false } , { name: "goldfish", hasWhiteSpots: true }, { name: "goldfish", hasWhiteSpots: false } ]
+
 function findFish(fishCollection) {
    for(let i = 0; i < fishCollection.length; i++) {
       if(fishCollection[i].hasWhiteSpots) {
-         return fishCollection[i];
+         return "Caught the fish!";
       }
    }
    return "Sorry, no more white-spotted fish";
 }
+
+findFish(fishTank)
