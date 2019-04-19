@@ -1,0 +1,47 @@
+Exercises
+
+1. Implement a solution for bubble sort.
+
+FUNCTION bubbleSort(array)
+  DO
+    SET SWAPPED to FALSE
+    FOR i = FIRST INDEX of array to LAST INDEX of array - 1
+      IF array[i] > array[i+1] THEN
+        SET temp to array[i]
+        SET array[i] to array[i+1]
+        SET array[i+1] to temp
+        SET SWAPPED to TRUE
+      END IF
+    END FOR
+  UNTIL SWAPPED is FALSE
+  RETURN ARRAY
+END FUNCTION
+
+2. Write pseudocode for quicksort.
+
+FUNCTION quickSort(numbers)
+  IF numbers is less than or equal to 1
+    RETURN numbers
+  END IF
+  SET pivot equal to numbers.length - 1
+  SET left to an empty array
+  SET right to an empty array
+  FOR each index from 0 to numbers.length - 1
+    IF numbers[i] is less than the pivot
+      PUSH numbers[i] to left array
+    ELSE
+      PUSH numbers[i] to right array
+    END IF
+  END FOR
+  CALL quickSort on the right array
+  CALL quickSort on the left array
+  CONCAT right and left arrays
+END FUNCTION
+
+3. We talked about time complexity in a previous checkpoint, and how to get an idea of the efficiency of an algorithm. After looking at the pseudocode for the above sorting methods, identify why merge sort and quick sort are much more efficient than the others. Walking through each algorithm with a few sample collections may help.
+
+Quicksort and merge sort are more efficient since its splitting the data into smaller sections to sort the data. This is especially great for larger data sets. 
+
+4. All of the sorts addressed in this checkpoint are known as comparison sorts. Research bucket sort and explain how it works. What is the ideal input for bucket sort?
+
+Bucket sort is a distribution sort algorithm. It creates arrays or buckets and iterates the data and assigning a bucket based on the parameters set in the algorithm. Then the buckets are sorted either with the same algorithm recursively or another algorithm. Finally the buckets are examined and placed in order so that the data will be organized. The ideal input would be uniformly distributed values over a range. 
