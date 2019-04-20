@@ -17,6 +17,24 @@ FUNCTION bubbleSort(array)
   RETURN ARRAY
 END FUNCTION
 
+function bubbleSort(array) {
+  do {
+    var swapped = false;
+    for(var i = 0; i < array.length-1; i++) {
+      if(array[i] > array[i + 1]) {
+	var temp = array[i];
+	array[i] = array[i+1];
+        array[i+1] = temp;
+        swapped = true;
+      }
+    }
+  } while(swapped);
+  return array;
+}
+
+var a = [13, 103, 3, 234, 142, 345, 456, 567, 27];
+bubbleSort(a);
+
 2. Write pseudocode for quicksort.
 
 FUNCTION quickSort(numbers)
